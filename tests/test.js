@@ -1,11 +1,15 @@
-﻿var Processor = require('../lib/node-donkey/Processor');
+var Processor = require('../lib/node-donkey/processors/Processor');
 var Exchange = require('../lib/node-donkey/Exchange');
-var Pipeline = require('../lib/node-donkey/Pipeline');
-var Filter = require('../lib/node-donkey/Filter');
-var Choice = require('../lib/node-donkey/Choice');
-var Multicast = require('../lib/node-donkey/Multicast');
-var Splitter = require('../lib/node-donkey/Splitter');
-var Resequencer = require('../lib/node-donkey/Resequencer');
+var Pipeline = require('../lib/node-donkey/processors/Pipeline');
+var Filter = require('../lib/node-donkey/processors/Filter');
+var Choice = require('../lib/node-donkey/processors/Choice');
+var Multicast = require('../lib/node-donkey/processors/Multicast');
+var Splitter = require('../lib/node-donkey/processors/Splitter');
+var Resequencer = require('../lib/node-donkey/processors/Resequencer');
+
+var Endpoint = require('../lib/node-donkey/components/Endpoint');
+var DirectEndpoint = require('../lib/node-donkey/components/direct/DirectEndpoint');
+
 var ut = require('../lib/node-donkey/Utils');
 var assert = require('assert');
 
@@ -100,27 +104,22 @@ for(var i=0,o=l.length;i<o;i++){
 //c1.on('exchangeOut',function(exchange){console.log(exchange)});
 var c = 0;
 
-var ex1 = new Exchange({'in':{'header':{'seqnum':1}}});
-var ex2 = new Exchange(ex1);
-var ex3 = ex1;
+var de = new DirectEndpoint({'endpointUri':'direct:/a'});
+de.addConsumer(de.createConsumer());
+var begin = de.createProducer();
 
-assert.notEqual(ex1,ex2);
-assert.equal(ex1,ex3);
-assert.notEqual(ex2,ex3);
+var de2 = new DirectEndpoint({'endpointUri':'direct:/bb'});
+de2.addConsumer(de.createConsumer());
+var begin2 = de2.createProducer();
 
-assert.deepEqual(ex1,ex2);
-assert.deepEqual(ex1,ex3);
-assert.deepEqual(ex2,ex3);
-
-assert.notStrictEqual(ex1,ex2);
-assert.strictEqual(ex1,ex3);
-assert.notStrictEqual(ex2,ex3);
+de.consumer.on('exchangeOut',function(exchange){begin2.process(exchange)});
 
 
-/* setInterval(function(){
-	var ex = new Exchange("messageIn-"+c.toString(),"messageOut");
-	
-	if(c<tt.length){c1.process(tt[c]);}
-	// c1.process(ex);
+de2.consumer.on('exchangeOut',function(exchange){console.log(exchange)});
+
+
+setInterval(function(){
+	var ex = new Exchange({'in':"messageIn-"+c.toString(),'out':"messageOut"});	
+	begin.process(ex);
 	c = c+1;
-},1000); */
+},1000);
