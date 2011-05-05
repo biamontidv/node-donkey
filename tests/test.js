@@ -108,6 +108,8 @@ var de = new DirectEndpoint({'endpointUri':'direct:/a'});
 de.addConsumer(de.createConsumer());
 var begin = de.createProducer();
 
+console.log(de);
+
 var de2 = new DirectEndpoint({'endpointUri':'direct:/bb'});
 de2.addConsumer(de.createConsumer());
 var begin2 = de2.createProducer();

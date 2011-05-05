@@ -1,0 +1,10 @@
+<route>
+    <from uri="direct://incomingOrders"/>
+    <pipeline>
+        <filter>
+            <simple>predicateA</simple>
+        </filter>
+        <to uri='log://node-donkey?level=log'/>
+    </pipeline>
+</route>
+
