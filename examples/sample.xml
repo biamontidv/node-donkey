@@ -4,7 +4,17 @@
         <filter>
             <simple>predicateA</simple>
         </filter>
-        <to uri='log://node-donkey?level=log'/>
+        <to uri='direct://filteredOrders'/>
     </pipeline>
 </route>
 
+<route>
+    <from uri="direct://filteredOrders"/>
+    <to uri='log://node-donkey?level=log'/>
+</route>
+
+
+<route>
+    <from uri="direct://filteredOrders"/>
+    <to uri='log://route66?level=log'/>
+</route>

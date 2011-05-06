@@ -1,9 +1,9 @@
 var vows = require('vows');
 var assert = require('assert');
 var events = require('events');
-var Multicast = require('../lib/node-donkey/processors/Multicast');
-var Exchange = require('../lib/node-donkey/Exchange');
-var Processor = require('../lib/node-donkey/processors/Processor');
+var Multicast = require('../../lib/node-donkey/processors/Multicast');
+var Exchange = require('../../lib/node-donkey/Exchange');
+var Processor = require('../../lib/node-donkey/processors/Processor');
 
 var targets = [];
 var e = new events.EventEmitter;

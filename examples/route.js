@@ -4,18 +4,19 @@ var Exchange = require('../lib/node-donkey/Exchange');
 
 
 
-var filename = "/home/biamontidv/projects/node-donkey/tests/sample.xml";
+var filename = "/home/biamontidv/projects/node-donkey/examples/sample.xml";
 var rb = new RouteBuilder();
 var route;
 
 rb.configureRoute(filename);
-rb.on('route',function(route){
-    route = route;
-    rb.assemble(route); 
+rb.on('routes',function(routes){
+        
+    routes = routes;
+    
+    rb.assemble(routes); 
     
     
-    
-    var begin = route.input.processor.endpoint.producer;    
+    var begin = routes[0].input.processor.endpoint.producer;    
     
     var c = 0;
     setInterval(function(){

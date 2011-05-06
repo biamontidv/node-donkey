@@ -2,7 +2,7 @@ var vows = require('vows');
 var assert = require('assert');
 var events = require('events');
 
-var Filter = require('../lib/node-donkey/processors/Filter');
+var Filter = require('../../lib/node-donkey/processors/Filter');
 var predicate = {'matches':function(exchange){return exchange}};
 var e = new events.EventEmitter;
 
