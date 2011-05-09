@@ -1,2 +1,2 @@
-{ "name" : "node-donkey-log",
+{ "name" : "donkey-log",
   "main" : "./LogComponent.js"}

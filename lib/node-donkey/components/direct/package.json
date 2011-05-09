@@ -1,2 +1,2 @@
-{ "name" : "node-donkey-direct",
+{ "name" : "donkey-direct",
   "main" : "./DirectComponent.js"}
