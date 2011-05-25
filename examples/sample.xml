@@ -1,5 +1,5 @@
 <route>
-    <from uri="direct://incomingOrders"/>
+    <from uri="direct://orders"/>
     <pipeline>
         <filter>
             <simple>predicateA</simple>

@@ -1,0 +1,18 @@
+<route>
+    <from uri="direct://initialorders"/>
+    <multicast>
+        <to uri='log://initialorders?level=log'/>
+        <to uri='amqp://initorders'/>
+        <pipeline>
+            <filter>
+                <simple>predicateA</simple>
+            </filter>
+            <to uri='log://node-donkey?level=log'/>
+        </pipeline>        
+    </multicast>
+</route>
+
+<route>
+    <from uri='amqp://initorders'/>
+    <to uri='log://amqp?level=log'/>
+</route>

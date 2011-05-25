@@ -1,0 +1,7 @@
+<route>
+    <from uri="direct://incomingOrders"/>
+    <pipeline>
+        <process ref='/home/biamontidv/projects/node-donkey/examples/ExampleProcessor'/>
+        <to uri="log://process?level=log"/>
+    </pipeline>
+</route>

@@ -1,0 +1,13 @@
+<route>
+    <from uri="direct://incomingOrders"/>
+    <choice>
+        <when>
+            <simple>predicateA</simple>
+            <to uri="log://mult_3?level=log"/>
+        </when>
+        <when>
+            <simple>predicateB</simple>
+            <to uri="log://mult_5?level=log"/>
+        </when>
+    </choice>
+</route>

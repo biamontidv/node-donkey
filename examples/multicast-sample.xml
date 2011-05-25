@@ -1,0 +1,8 @@
+<route>
+    <from uri="direct://incomingOrders"/>
+    <multicast>
+        <to uri="log://multicast1?level=log"/>
+        <to uri="log://multicast2?level=log"/>
+        <to uri="log://multicast3?level=log"/>
+    </multicast>
+</route>
