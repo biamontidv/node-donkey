@@ -1,7 +1,7 @@
 
 var RouteBuilder = require('../lib/node-donkey/builder/RouteBuilder');
 var Exchange = require('../lib/node-donkey/Exchange');
-
+var Message = require('../lib/node-donkey/Message');
 
 
 var filename = "/home/biamontidv/projects/node-donkey/examples/simple.xml";
@@ -10,7 +10,7 @@ var route;
 
 var fs = require('fs');
 
-
+        
 
 rb.configureRoute(filename);
 rb.on('routes',function(routes){
@@ -19,8 +19,11 @@ rb.on('routes',function(routes){
         var begin = routes[0].from.endpoint.producer;
         var c = 0;
         setInterval(function(){
-            var msg = {'header':{'DonkeyFileName':'/home/biamontidv/test_'+c.toString()+'.txt'}
-                    ,'body':"messageIn-"+c.toString()};
+            /*
+            var msg = new Message({'header':{'DonkeyFileName':'test_'+c.toString()+'.txt'}
+                    ,'body':"messageIn-"+c.toString()});
+            */
+            var msg = new Message({'body':"messageIn-"+c.toString()});            
             var ex = new Exchange({'in':msg});
 
             begin.process(ex);

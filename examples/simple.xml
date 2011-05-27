@@ -1,4 +1,4 @@
 <route>
     <from uri="direct://initialorders"/>
-    <to uri="file://"/>
+    <to uri="file:test1?fileName=what.txt&&fileExist=Append"/>
 </route>
