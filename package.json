@@ -1,5 +1,15 @@
 { "name" : "donkey"
-, "author" : "Davide Biamonti"
+, "description" : "EIP for JavaScript, node style"
+, "keywords" : ["EIP","Patterns","integration patterns"]
+, "author" : "Davide Biamonti <wildrover78@gmail.com>"
+, "repository" : 
+    { "type" : "git"
+    , "url" : "git://github.com/biamontidv/node-donkey.git"            
+    }
 , "version" : "0.0.1"
 , "license" : "Apache License, Version 2.0"
+, "dependencies" : 
+    { "sax" : ">= 0.1.2"}
+, "devDependencies" : 
+    { "vows" : ">= 0.5.8"}
 }

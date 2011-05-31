@@ -1,4 +1,7 @@
 <route>
     <from uri="direct://initialorders"/>
-    <to uri="file:test1?fileName=what.txt&&fileExist=Append"/>
+    <multicast>
+        <to uri="file:test1?fileName=what.txt&&fileExist=Override"/>
+        <to uri="log://myLOG?level=log"/>
+    </multicast>
 </route>
