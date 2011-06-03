@@ -8,9 +8,6 @@ var filename = "/home/biamontidv/projects/node-donkey/examples/simple.xml";
 var rb = new RouteBuilder();
 var route;
 
-var fs = require('fs');
-
-        
 
 rb.configureRoute(filename);
 rb.on('routes',function(routes){
@@ -19,12 +16,11 @@ rb.on('routes',function(routes){
         var begin = routes[0].from.endpoint.producer;
         var c = 0;
         setInterval(function(){
-            /*
-            var msg = new Message({'header':{'DonkeyFileName':'test_'+c.toString()+'.txt'}
-                    ,'body':"messageIn-"+c.toString()});
-            */
-            var msg = new Message({'body':"messageIn-"+c.toString()});            
+            //var msg = new Message({'header':{'DonkeyFileName':'test_'+c.toString()+'.txt'},'body':"messageIn-"+c.toString()});
+            var msg = new Message({'body':"messageIn-"+c.toString()});
+            if(c%3 == 0){msg.foo = 'heya'};
             var ex = new Exchange({'in':msg});
+            console.log(ex)
 
             begin.process(ex);
         	c = c+1;
