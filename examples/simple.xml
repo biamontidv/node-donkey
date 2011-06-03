@@ -1,10 +1,5 @@
 <route>
     <from uri="direct://initialorders"/>
-    <filter>
-        <expression>exchange.in.foo</expression>
-    </filter>
-    <multicast>
-        <to uri="file:test1?fileName=what.txt&&fileExist=Override"/>
-        <to uri="log://myLOG?level=log"/>
-    </multicast>
+    <to uri='obj://myObj?method=myMethod'/>
+    <to uri="log://myLOG?level=log"/>
 </route>

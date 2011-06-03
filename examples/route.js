@@ -9,6 +9,9 @@ var rb = new RouteBuilder();
 var route;
 
 
+var obj = require('./myObj');
+require('../lib/node-donkey/components/obj/ObjectResolver').register('myObj',new obj());
+
 rb.configureRoute(filename);
 rb.on('routes',function(routes){
     routes[0].on('started',function(){
@@ -20,7 +23,6 @@ rb.on('routes',function(routes){
             var msg = new Message({'body':"messageIn-"+c.toString()});
             if(c%3 == 0){msg.foo = 'heya'};
             var ex = new Exchange({'in':msg});
-            console.log(ex)
 
             begin.process(ex);
         	c = c+1;
