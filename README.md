@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/biamontidv/node-donkey.png)](http://travis-ci.org/biamontidv/node-donkey)
 # Donkey: EIP for JavaScript, node style.
 Donkey provides an integration framework based on Enterprise Integration Patterns for JavaScript.
 
